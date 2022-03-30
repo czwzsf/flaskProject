@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}
+    用户中心
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+{% endblock %}
+{% block middle %}
+    <div><a href="{{ url_for('user.register') }}">注册</a><a href="{{ url_for('user.user_login') }}">登入</a></div>
+    <div>
+        <h1>所有用户信息如下</h1>
+        搜索<input type="text" name="search" placeholder="输入搜索的词语"> <input type="button" value="搜索" id="search">
+        {% if data_MIS %}
+            <table border="1" cellspacing="0" cellpadding="0">
+                {% for mis in data_MIS %}
+                    <tr>
+                        <th>{{ loop.index }}</th>
+                        <th>{{ mis. chassis_number }}</th>
+                        <th>{{ mis. Engine_number }}</th>
+                        <th>{{ mis. Claim_No }}</th>
+                        <th>{{ mis. Claim_filing_month }}</th>
+                        <th>{{ mis. TDS }}</th>
+                        <th>{{ mis. engine_type }}</th>
+                        <th>{{ mis. Engine_production_date }}</th>
+                        <th>{{ mis. Vehicle_production_date }}</th>
+                        <th>{{ mis. Date_of_sale }}</th>
+                        <th>{{ mis. Date_of_failure }}</th>
+                        <th>{{ mis. Actual_vehicle_mileage }}</th>
+                        <th>{{ mis. Actual_use_month_of_vehicle }}</th>
+                        <th>{{ mis. Vehicle_early_claim_information }}</th>
+                        <th>{{ mis. Date_of_replacing_the_third_stage }}</th>
+                        <th>{{ mis. Actual_mileage_of_valve }}</th>
+                        <th>{{ mis. Actual_service_month_of_valve }}</th>
+                        <th>{{ mis. Fault_Province }}</th>
+                        <th>{{ mis. Driving_route_and_road_conditions }}</th>
+                        <th>{{ mis. Fault_description_and_analysis }}</th>
+                        <th>{{ mis. Number_of_failed_valve_cylinders }}</th>
+                        <th>{{ mis. Failure_mode }}</th>
+                        <th>{{ mis. Engine_phase }}</th>
+                        <th>{{ mis. Vehicle_factory }}</th>
+                        <th>{{ mis. service_station }}</th>
+                        <th><a href="">更新</a><a href="">删除</a></th>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        {% else %}
+            <p>当前还没有任何用户</p>
+        {% endif %}
+
+    </div>
+{% endblock %}

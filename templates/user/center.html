@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+    用户中心
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+{% endblock %}
+{% block middle %}
+    <div><a href="{{ url_for('user.register') }}">注册</a><a href="{{ url_for('user.user_login') }}">登入</a></div>
+    <div>
+        <h1>所有用户信息如下</h1>
+        搜索<input type="text" name="search" placeholder="输入搜索的词语"> <input type="button" value="搜索" id="search">
+        {% if users %}
+            <table border="1" cellspacing="0" cellpadding="0">
+                {% for user in users %}
+                    <tr>
+                        <th>{{ loop.index }}</th>
+                        <th>{{ user.username }}</th>
+                        <th>{{ user.phone }}</th>
+                        <th>{{ user.email }}</th>
+                        <th>{{ user.rdatetime }}</th>
+                        <th><a href="">更新</a><a href="">删除</a></th>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        {% else %}
+            <p>当前还没有任何用户</p>
+        {% endif %}
+
+    </div>
+{% endblock %}
